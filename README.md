@@ -6,7 +6,9 @@
 - You need to get a 75% or better to pass. (You must pass all assessments in order to graduate Code Platoon's program.)
 
 ## Rules / Process
-- This test is fully open notes and open Google, but is not to be completed with the help of any other student/individual.
+- This assessment is fully open notes and open Google.
+- You may seek basic assistance from instructors, TAs, and other students for troubleshootsing your project or understanding core concepts.
+- You MAY NOT have anyone else design or write the code for your project. 
 
 ## Requirements
 - This assessment must be completed using ReactJS on your front-end.
