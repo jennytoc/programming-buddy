@@ -1,4 +1,4 @@
-# Assessment 5: React + Django Full-stack Application
+# Assessment 5: React + Django Full-Stack Application
 - **Personal Project**
 
 ## Important Grading Information
