@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 // Pages
 import HomePage from './pages/HomePage';
 import ForumPage from './pages/ForumPage';
+import PostListPage from './pages/PostListPage';
 import MembersPage from './pages/MembersPage';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={ <HomePage/> } />
           <Route path="/forum" element={ <ForumPage/> } />
+          <Route path="/forum/:section" element={ <PostListPage /> } />
           <Route path="/members" element={ <MembersPage/> } />
         </Routes>
       </HashRouter>
