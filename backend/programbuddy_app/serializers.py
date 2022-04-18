@@ -6,7 +6,7 @@ from .models import *
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'password']
+        fields = ['id', 'username', 'password', 'first_name', 'last_name', 'email']
     
     password = serializers.CharField(write_only=True)
 
@@ -15,26 +15,29 @@ class UserSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
 class UserProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     class Meta:
         model = UserProfile
-        fields = ['user', 'about']
+        fields = '__all__'
 
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Language
-        fields = ['id', 'language', 'proficiency', 'user']
+        fields = '__all__'
 
 class ForumSerializer(serializers.ModelSerializer):
     class Meta:
         model = Forum
-        fields = ['id', 'title', 'description']
-
+        fields = '__all__'
+    
 class PostSerializer(serializers.ModelSerializer):
+    forum = ForumSerializer()
     class Meta:
         model = Post
-        fields = ['id', 'forum', 'user', 'title', 'description', 'date_created']
+        fields = '__all__'
 
 class CommentSerializer(serializers.ModelSerializer):
+    post = PostSerializer()
     class Meta:
         model = Comment
-        fields = ['id', 'post', 'user', 'description', 'date_created']
+        fields = '__all__'

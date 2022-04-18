@@ -34,9 +34,10 @@ class Language(models.Model):
 class Forum(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
+    value = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"Title: {self.title}, Description: {self.description}"
+        return f"Title: {self.title}, Description: {self.description}, Value: {self.value}"
 
 class Post(models.Model):
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE, related_name="posts")

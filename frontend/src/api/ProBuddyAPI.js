@@ -10,8 +10,7 @@ ProBuddyAPI.getAllForums = async () => {
     () => axios.get(`${BASE_URL}/forums/`)
   )
 }
-// Get posts from forums
-// If forum equals forum.id, then push to list
+// Get posts
 ProBuddyAPI.getAllPosts = async () => {
   return await apiHelpers.tryCatchFetch(
     () => axios.get(`${BASE_URL}/posts/`)
