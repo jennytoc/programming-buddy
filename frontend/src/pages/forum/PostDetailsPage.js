@@ -35,8 +35,6 @@ function PostDetailsPage(props) {
     }
     setCommentsList(comments ? comments : [])
   }
-  console.log("postdetails", postDetails)
-  console.log("commentsList", commentsList)
 
   return (
     <div>

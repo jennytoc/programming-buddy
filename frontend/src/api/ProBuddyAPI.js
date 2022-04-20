@@ -39,6 +39,10 @@ ProBuddyAPI.getAllUsers = async () => {
 }
 
 // Get profile by ID
-ProBuddyAPI.getProfile = async ()
+ProBuddyAPI.getProfile = async (userId) => {
+  return await apiHelpers.tryCatchFetch(
+    () => axios.get(`${BASE_URL}/user-profiles/${userId}`)
+  )
+}
 
 export default ProBuddyAPI
