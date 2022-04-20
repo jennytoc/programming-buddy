@@ -17,4 +17,28 @@ ProBuddyAPI.getAllPosts = async () => {
   )
 }
 
+// Get post by id
+ProBuddyAPI.getPostById = async (postId) => {
+  return await apiHelpers.tryCatchFetch(
+    () => axios.get(`${BASE_URL}/posts/${postId}`)
+  )
+}
+
+// Get comments
+ProBuddyAPI.getAllComments = async () => {
+  return await apiHelpers.tryCatchFetch(
+    () => axios.get(`${BASE_URL}/comments/`)
+  )
+}
+
+// Get users
+ProBuddyAPI.getAllUsers = async () => {
+  return await apiHelpers.tryCatchFetch(
+    () => axios.get(`${BASE_URL}/users/`)
+  )
+}
+
+// Get profile by ID
+ProBuddyAPI.getProfile = async ()
+
 export default ProBuddyAPI

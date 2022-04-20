@@ -6,9 +6,10 @@ import NavBar from './components/NavBar';
 
 // Pages
 import HomePage from './pages/HomePage';
-import ForumPage from './pages/ForumPage';
-import PostListPage from './pages/PostListPage';
-import MembersPage from './pages/MembersPage';
+import ForumPage from './pages/forum/ForumPage';
+import PostListPage from './pages/forum/PostListPage';
+import PostDetailsPage from './pages/forum/PostDetailsPage';
+import MembersPage from './pages/members/MembersPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={ <HomePage/> } />
           <Route path="/forum" element={ <ForumPage/> } />
           <Route path="/forum/:section" element={ <PostListPage /> } />
+          <Route path="/forum/:section/:postId" element={ <PostDetailsPage /> } />
           <Route path="/members" element={ <MembersPage/> } />
         </Routes>
       </HashRouter>

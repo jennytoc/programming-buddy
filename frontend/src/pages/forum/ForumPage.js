@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import ProBuddyAPI from "../api/ProBuddyAPI";
-import ForumRender from "../components/forum/ForumRender";
+import ProBuddyAPI from "../../api/ProBuddyAPI";
+import ForumRender from "../../components/forum/ForumRender";
 
 function ForumPage() {
   // states
@@ -9,12 +9,11 @@ function ForumPage() {
   // effects
   useEffect(()=>{
     loadForumLists()
-  }, []) // Change once we add authentication features
+  }, []) // Change once we add authentication features for admin
 
   const loadForumLists = async () =>{
     const data = await ProBuddyAPI.getAllForums()
     setForumLists(data ? data : [] )
-    console.log("DATA:", data)
   }
 
   // render

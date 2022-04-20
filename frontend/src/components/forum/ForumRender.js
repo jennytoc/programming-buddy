@@ -5,10 +5,9 @@ import ProBuddyAPI from "../../api/ProBuddyAPI"
 function ForumRender(props) {
   return (
     <div className="forum-div">
-      { console.log("forum list:", props.forum.title)}
-      <Link key={ props.forum.id } to={ `/forum/${ props.forum.value }` }><h5>{ props.forum.title }</h5>
+      <Link key={ props.forum.id } to={ `/forum/${ props.forum.value }` }><h5>{ props.forum.forum_title }</h5>
       </Link>
-      <p>{ props.forum.description }</p>
+      <p>{ props.forum.forum_description }</p>
     </div>
   )
 }
