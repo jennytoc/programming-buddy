@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profiles", primary_key=True)
     about = models.TextField()
+    profile_pic = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return f"User: {self.user}"

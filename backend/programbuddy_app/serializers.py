@@ -12,13 +12,20 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_data["password"] = make_password(validated_data["password"])
+        print(validated_data)
         return super().create(validated_data)
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
     class Meta:
         model = UserProfile
         fields = '__all__'
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        user = User.objects.get(pk=data['user'])
+        serialized = UserSerializer(instance=user)
+        data['user'] = serialized.data
+        return data
 
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:

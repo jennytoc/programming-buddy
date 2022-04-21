@@ -11,5 +11,7 @@ router.register("posts", PostViewSet, basename="post")
 router.register("comments", CommentViewSet, basename="comment")
 
 urlpatterns = [
-    path("", include(router.urls))
+    path("", include(router.urls)),
+    path("login/", handle_login),
+    path("logout/", handle_logout)
 ]

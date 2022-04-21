@@ -8,8 +8,8 @@ function PostDetailsPage(props) {
   const { postId } = useParams()
 
   // state
-  const [postDetails, setPostDetails] = useState([])
-  const [commentsList, setCommentsList] = useState([])
+  const [postDetails, setPostDetails] = useState(null) // When expecting an object, initialize with null
+  const [commentsList, setCommentsList] = useState([]) // When expecting an array, initialize with empty array
  
   // effects
   useEffect(() => {
@@ -18,7 +18,7 @@ function PostDetailsPage(props) {
 
   const loadPost = async () => {
     const data = await ProBuddyAPI.getPostById(postId)
-    setPostDetails(data ? data : [])
+    setPostDetails(data ? data : null)
   }
 
   useEffect(() => {
