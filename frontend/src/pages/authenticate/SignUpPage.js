@@ -20,4 +20,22 @@ function SignUpPage(props) {
       navigate("/login")
     }
   }
+
+  // render
+  return (
+    <div>
+      <h4>Sign Up</h4>
+      <form onSubmit={ handleSignUp } method="POST">
+        <label>Username:</label>
+        <input type="text" name="username" />
+        <br />
+        <label>Password:</label>
+        <input type="password" name="password" />
+        <br />
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  )
 }
+
+export default SignUpPage;

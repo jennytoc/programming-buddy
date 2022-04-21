@@ -7,7 +7,7 @@ const BASE_URL = "http://localhost:8000" // Backend
 // Authentication methods
 ProBuddyAPI.signup = async (signupData) => {
   return await apiHelpers.tryCatchFetch(
-    () => axios.post(`${BASE_URL}/users`, signupData, apiHelpers.getCsrfConfig())
+    () => axios.post(`${BASE_URL}/users/`, signupData, apiHelpers.getCsrfConfig())
   )
 }
 

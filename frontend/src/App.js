@@ -9,6 +9,7 @@ import LoginBar from './components/LoginBar';
 // Pages
 import HomePage from './pages/HomePage';
 // authenticate
+import SignUpPage from './pages/authenticate/SignUpPage';
 import LoginPage from './pages/authenticate/LoginPage';
 // forum
 import ForumPage from './pages/forum/ForumPage';
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={ <HomePage/> } />
 
+          <Route path="/signup" element={ <SignUpPage /> } />
           <Route path="/login" element={ <LoginPage setUsername={ setUsername }/> } />
 
           <Route path="/forum" element={ <ForumPage/> } />
