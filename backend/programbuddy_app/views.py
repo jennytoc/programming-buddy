@@ -34,22 +34,37 @@ class ForumViewSet(ModelViewSet): # Gonna change to add admin privileges
     serializer_class = ForumSerializer
 
 class PostViewSet(ModelViewSet, PostUserPermission): # Change to only let users comment
-    permissions = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
+    def perform_create(self, serializer):
+
+        serializer.save(user=self.request.user) # auto-assign user id
+        return super().perform_create(serializer)
+
     def get_permissions(self):
-        if self.request.method == "DELETE":
+        if self.request.method == "GET":
             return (permissions.AllowAny(),)
-        elif self.request.method == "PUT":
-            return (permissions.AllowAny(),)
+        elif self.request.method == "DELETE":
+            return (permissions.IsAuthenticated(),)
+        elif self.request.method == "PATCH":
+            return (permissions.IsAuthenticated(),)
         return (permissions.IsAuthenticatedOrReadOnly(),)
+
+    def perform_update(self, serializer):
+        # current_post = serializer.instance
+        print("USER:", self.request.user)
+        # if current_post.user != self.request.user:
+        #     raise JsonResponse({"error":"unable to edit post"}, status=403)
+        return super().perform_update(serializer)
 
 
 class CommentViewSet(ModelViewSet, PostUserPermission):
-    permissions = [PostUserPermission]
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
     def get_permissions(self):
         if self.request.method == "DELETE":

@@ -32,7 +32,9 @@ function LoginBar(props) {
     return (
       <div>
         <Navbar className="login-bar">
-          <Nav.Link as={Link} to="#" onClick={logMeOut}>Logout</Nav.Link>
+          <Nav className="ms-auto">
+          <Nav.Link as={Link} to="#" onClick={logMeOut}><Button variant="outline-secondary">Logout</Button></Nav.Link>
+          </Nav>
         </Navbar>
       </div>
     )

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Card } from "react-bootstrap";
 import ProBuddyAPI from "../../api/ProBuddyAPI";
 import ForumRender from "../../components/forum/ForumRender";
 
@@ -27,11 +28,10 @@ function ForumPage() {
 
   return (
     <div>
-      <h1>Forum Page</h1>
-      {/* <CreatePost forumLists={forumLists} /> */}
-      <div>
-        { renderForumLists() }
-      </div>
+      <Card border="info">
+        <Card.Header as="h4">Forums</Card.Header>
+          { renderForumLists() }
+      </Card>
     </div>
   )
 }

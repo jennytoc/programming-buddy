@@ -1,0 +1,23 @@
+.header-div {
+  background-image: url('/src/images/Person-programming.jpg');
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+}
+
+.text-div {
+  position: flex;
+
+  background: rgba(202, 233, 255, 0.6);
+}
+
+.header-text {
+  position: absolute;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 59px;
+  text-align: center;
+  width: 70%;
+  color: #D7D4D4;
+}

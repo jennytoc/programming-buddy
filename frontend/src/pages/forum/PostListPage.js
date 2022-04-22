@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom";
+import { Button, Card } from "react-bootstrap";
 import ProBuddyAPI from "../../api/ProBuddyAPI";
 import PostList from "../../components/forum/PostList";
 
@@ -35,13 +36,13 @@ function PostListPage(props) {
 
   return (
     <div>
-      <h1>Posts Page</h1>
-      <div>
-        { renderPostLists() }
-      </div>
+      <Card border="info">
+        <Card.Header as="h4">Topics</Card.Header>
+          { renderPostLists() }
+      </Card>
       <div className="create-post-btn">
         <Link to={`/forum/${section}/create-post`}>
-          <button>Create a Post</button>
+          <Button variant="outline-primary">Create a Post</Button>
         </Link>
       </div>
     </div>

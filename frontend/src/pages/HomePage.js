@@ -1,13 +1,19 @@
+import './HomePageStyle.css'
+import React from 'react';
+import Container from 'react-bootstrap/Container'
+
 function HomePage() {
   return (
     <div>
       <header>
-      <div class="p-5 mb-4 bg-light rounded-3">
-      <div class="container-fluid py-5">
-        <p class="col-md-8 fs-4">Connect with other programmers for FREE!</p>
-        <button class="btn btn-primary btn-lg" type="button">Join Now</button>
-      </div>
-    </div>
+      <Container as="div" className="header-div" fluid>
+        <div className="header-items">
+          <div className='text-div'>
+            <h2 className="header-text">Connect with other programmers for FREE!</h2>
+          </div>
+          <button className="btn btn-primary btn-lg" type="button">Join Now</button>
+        </div>
+    </Container>
       </header>
     </div>
   )
