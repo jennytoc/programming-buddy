@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import ProBuddyAPI from "../../api/ProBuddyAPI"
 
-
 // Might change forum-div to ul
 function PostList(props) {
   return (

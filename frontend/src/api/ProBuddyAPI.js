@@ -30,10 +30,31 @@ ProBuddyAPI.getAllForums = async () => {
     () => axios.get(`${BASE_URL}/forums/`, apiHelpers.getCsrfConfig())
   )
 }
+
 // Get posts
 ProBuddyAPI.getAllPosts = async () => {
   return await apiHelpers.tryCatchFetch(
     () => axios.get(`${BASE_URL}/posts/`, apiHelpers.getCsrfConfig())
+  )
+}
+
+// Create posts
+ProBuddyAPI.createPost = async (postData) => {
+  return await apiHelpers.tryCatchFetch(
+    () => axios.post(`${BASE_URL}/posts/`, postData, apiHelpers.getCsrfConfig())
+  )
+}
+
+// Edit posts
+ProBuddyAPI.editPost = async (postId, postData) => {
+  return await apiHelpers.tryCatchFetch(
+    () => axios.put(`${BASE_URL}/posts/${postId}`, postData, apiHelpers.getCsrfConfig())
+  )
+}
+// Delete post
+ProBuddyAPI.deletePost = async (postId) => {
+  return await apiHelpers.tryCatchFetch(
+    () => axios.delete(`${BASE_URL}/posts/${postId}`, apiHelpers.getCsrfConfig)
   )
 }
 
@@ -48,6 +69,20 @@ ProBuddyAPI.getPostById = async (postId) => {
 ProBuddyAPI.getAllComments = async () => {
   return await apiHelpers.tryCatchFetch(
     () => axios.get(`${BASE_URL}/comments/`, apiHelpers.getCsrfConfig())
+  )
+}
+
+// Create comment
+ProBuddyAPI.createComment = async (commentData) => {
+  return await apiHelpers.tryCatchFetch(
+    () => axios.post(`${BASE_URL}/comments/`, commentData, apiHelpers.getCsrfConfig())
+  )
+}
+
+// Delete comment
+ProBuddyAPI.deleteComment = async (commentId) => {
+  return await apiHelpers.tryCatchFetch(
+    () => axios.delete(`${BASE_URL}/comments/${commentId}/`, apiHelpers.getCsrfConfig)
   )
 }
 

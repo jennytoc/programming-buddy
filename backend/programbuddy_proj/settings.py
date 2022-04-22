@@ -69,7 +69,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        "rest_framework.permissions.IsAuthenticated", # block actions for anonymous users by default
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly", 
     ] 
 }
 

@@ -4,8 +4,10 @@ import ProBuddyAPI from "../../api/ProBuddyAPI";
 import PostRender from "../../components/forum/PostRender";
 
 function PostDetailsPage(props) {
+  // const currentUser = props.username
+  // console.log("currentUser:", currentUser)
   // params
-  const { postId } = useParams()
+  const { section, postId } = useParams()
 
   // state
   const [postDetails, setPostDetails] = useState(null) // When expecting an object, initialize with null
@@ -36,9 +38,45 @@ function PostDetailsPage(props) {
     setCommentsList(comments ? comments : [])
   }
 
+  const removeComment = (deletedCommentId) => {
+    const newCommentsList = commentsList.filter((comment) => {
+      return comment.id !== deletedCommentId
+    })
+    setCommentsList(newCommentsList)
+  }
+
+  // event handlers
+  const handleCreateComment = async (event) => {
+    event.preventDefault()
+
+    const commentData = {
+      comment_description: event.target.elements["comment-description"].value,
+      post: postId,
+      user: props.username.user_id
+      
+    }
+    console.log("SENDING POST DATA...", commentData)
+    const data = await ProBuddyAPI.createComment(commentData)
+    if (data) {
+      console.log("RECEIVED DATA", data)
+      setCommentsList([...commentsList, commentData])
+    }
+
+  }
+  
+
   return (
     <div>
-      <PostRender {...postDetails} commentsList={commentsList} />
+      <div>
+        <PostRender {...postDetails} commentsList={commentsList} removeComment={removeComment} section={section} postId={postId}/>
+      </div>
+      <div className="comment-form">
+        <form onSubmit={ handleCreateComment } method="POST">
+          <label>Post A Comment</label>
+          <textarea id="comment-description" name="comment-description" rows="10" cols="90"></textarea>
+          <button type="submit">Submit Comment</button>
+        </form>
+      </div>
     </div>
   )
 }

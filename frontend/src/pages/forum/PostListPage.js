@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import ProBuddyAPI from "../../api/ProBuddyAPI";
 import PostList from "../../components/forum/PostList";
 
@@ -38,6 +38,11 @@ function PostListPage(props) {
       <h1>Posts Page</h1>
       <div>
         { renderPostLists() }
+      </div>
+      <div className="create-post-btn">
+        <Link to={`/forum/${section}/create-post`}>
+          <button>Create a Post</button>
+        </Link>
       </div>
     </div>
   )

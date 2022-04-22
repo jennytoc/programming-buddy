@@ -1,5 +1,7 @@
 import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import ProBuddyAPI from "../api/ProBuddyAPI"
+import './NavBarsStyle.css'
 
 function LoginBar(props) {
   const navigate = useNavigate()
@@ -18,14 +20,20 @@ function LoginBar(props) {
     if (props.username === "") {
       return (
         <div>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+            <Navbar className="login-bar" variant="light">
+              <Nav className="ms-auto">
+                <Nav.Link as={Link} to="/login"><Button variant="outline-secondary">Login</Button></Nav.Link>
+                <Nav.Link as={Link} to="/signup"><Button variant="outline-secondary">Sign Up</Button></Nav.Link>
+              </Nav>
+            </Navbar>
         </div>
       )
     }
     return (
       <div>
-        <Link to="#" onClick= {logMeOut}>Logout</Link>
+        <Navbar className="login-bar">
+          <Nav.Link as={Link} to="#" onClick={logMeOut}>Logout</Nav.Link>
+        </Navbar>
       </div>
     )
   }

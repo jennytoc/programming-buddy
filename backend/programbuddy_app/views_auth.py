@@ -20,10 +20,10 @@ def handle_login(request):
             print("username", username)
             print("password", password)
             user = authenticate(username=username, password=password)
-            print(user, user.is_active)
-            if user and user.is_active:
+            # print("USER ID:", user.id)
+            if user:
                 login(request, user)
-                return JsonResponse(data={ "username": user.username }, status=200)
+                return JsonResponse(data={ "username": user.username, "user_id": user.id }, status=200)
     
     except Exception as e:
         return error_on_request(str(e))

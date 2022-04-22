@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import ProBuddyAPI from "../../api/ProBuddyAPI";
+import "./MembersStyle.css"
 
 function ProfilePage(props) {
   // params
@@ -23,8 +24,9 @@ function ProfilePage(props) {
     <div>
       {memberDetails && memberDetails.user.username}
       <p>{ memberDetails && memberDetails.about }</p>
+      <img className="profile-pic" src={ memberDetails && memberDetails.profile_pic} />
     </div>
-  ) // Eventually we'll add profile pic
+  )
 }
 
 export default ProfilePage

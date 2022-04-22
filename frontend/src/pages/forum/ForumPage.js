@@ -3,6 +3,7 @@ import ProBuddyAPI from "../../api/ProBuddyAPI";
 import ForumRender from "../../components/forum/ForumRender";
 
 function ForumPage() {
+  
   // states
   const [forumLists, setForumLists] = useState([])
 
@@ -22,10 +23,12 @@ function ForumPage() {
       return <ForumRender key={ forum.id } forum={ forum } />
     })
   }
+  
 
   return (
     <div>
       <h1>Forum Page</h1>
+      {/* <CreatePost forumLists={forumLists} /> */}
       <div>
         { renderForumLists() }
       </div>

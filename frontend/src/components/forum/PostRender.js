@@ -1,14 +1,33 @@
+import ProBuddyAPI from "../../api/ProBuddyAPI"
+import { useNavigate, Link } from "react-router-dom"
 
 function PostRender(props) {
+  const navigate = useNavigate()
+
+  // event handlers
   const renderComments = () => {
     return props.commentsList.map((comment)=> {
+      const handleDeleteComment = async () => {
+        const data = await ProBuddyAPI.deleteComment(comment.id)
+        if (data) {
+          props.removeComment(comment.id)
+        }
+      }
       return <div className="comment">
         <p>{comment.comment_description}</p>
-        <p>{comment.user.username}</p>
+        <p>{comment.user && comment.user.username}</p>
+        <button className="delete-btn" onClick={ handleDeleteComment }>Delete Comment</button>
         </div>
     })
   }
-  // Ok...I'm so confused about props.user....without the logical operator, it throws an error saying username is undefined...why would user be null? 
+
+  const handleDeletePost = async () => {
+    const data = await ProBuddyAPI.deletePost(props.id)
+    if (data) {
+      navigate(`/forum/${props.forum_value}`)
+    }
+  }
+
   return (
     <div>
       <div className="original-post">
@@ -16,6 +35,10 @@ function PostRender(props) {
         <p>{props.post_description}</p>
         <p>{ props.user && props.user.username}</p>
         <p>{props.post_date_created}</p>
+        <button onClick={handleDeletePost}>Delete Post</button>
+        <Link to={`/forum/${props.forum_value}/${props.id}/edit-post`}>
+          <button>Edit Post</button>
+        </Link>
       </div>
       {renderComments()}
     </div>

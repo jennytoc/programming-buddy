@@ -18,6 +18,11 @@ import PostDetailsPage from './pages/forum/PostDetailsPage';
 // members
 import MembersPage from './pages/members/MembersPage';
 import ProfilePage from './pages/members/ProfilePage';
+import CreatePost from './pages/forum/CreatePost';
+import EditPost from './pages/forum/EditPost';
+// compiler
+import IDEPage from './pages/coding/IDEPage';
+import SelectIDE from './pages/coding/SelectIDE';
 
 function App() {
   // state
@@ -35,9 +40,15 @@ function App() {
 
           <Route path="/forum" element={ <ForumPage/> } />
           <Route path="/forum/:section" element={ <PostListPage /> } />
-          <Route path="/forum/:section/:postId" element={ <PostDetailsPage /> } />
+          <Route path="/forum/:section/create-post" element={ <CreatePost username={ username } /> } />
+          <Route path="/forum/:section/:postId/edit-post" element={ <EditPost username={ username } /> } />
+          <Route path="/forum/:section/:postId" element={ <PostDetailsPage username={ username }/> } />
+
           <Route path="/members" element={ <MembersPage/> } />
           <Route path="/members/:memberId" element={ <ProfilePage/> } />
+
+          <Route path="/compiler" element={ <SelectIDE /> } />
+          <Route path="/compiler/:language/:level" element={ <IDEPage /> } />
         </Routes>
       </HashRouter>
     </div>

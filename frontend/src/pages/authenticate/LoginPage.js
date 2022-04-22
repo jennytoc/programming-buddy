@@ -17,7 +17,9 @@ function LoginPage(props) {
     const data = await ProBuddyAPI.login(loginData)
 
     if (data) {
-      props.setUsername(data.username)
+      // props.setUsername(data.username)
+      props.setUsername(data)
+      console.log("LOGINPAGE DATA:", data)
       navigate("/")
     }
   }
