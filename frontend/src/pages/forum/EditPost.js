@@ -1,6 +1,7 @@
 import ProBuddyAPI from "../../api/ProBuddyAPI"
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import {Form, Button, Stack} from 'react-bootstrap'
 
 function EditPost(props) {
   const navigate = useNavigate()
@@ -30,7 +31,7 @@ function EditPost(props) {
   }
 
   // event handlers
-  const handleCreatePost = async (event) => {
+  const handleEditPost = async (event) => {
     event.preventDefault()
 
     const postData = {
@@ -54,19 +55,39 @@ function EditPost(props) {
   }
 
   return (
-    <div className="add-post">
-      <form onSubmit={ handleCreatePost } method="PUT">
-        <label>Post Title</label>
-        <input name="post-title" defaultValue={postDetails && postDetails.post_title}/>
-        <label>Description</label>
-        <textarea id="post-description" name="post-description" rows="10" cols="90" defaultValue={postDetails && postDetails.post_description}></textarea>
-        <label>Forum</label>
-        <select name="forum-selection">
-          { renderForumNames() }
-        </select>
-        <button type="submit">Save Post</button>
-      </form>
-    </div>
+    // <div className="add-post">
+    //   <form onSubmit={ handleCreatePost }>
+    //     <label>Post Title</label>
+    //     <input name="post-title" defaultValue={postDetails && postDetails.post_title}/>
+    //     <label>Description</label>
+    //     <textarea id="post-description" name="post-description" rows="10" cols="90" defaultValue={postDetails && postDetails.post_description}></textarea>
+    //     <label>Forum</label>
+    //     <select name="forum-selection">
+    //       { renderForumNames() }
+    //     </select>
+    //     <button type="submit">Save Post</button>
+    //   </form>
+    // </div>
+    <Form onSubmit={ handleEditPost} method="POST">
+      <Form.Group className="mb-3" controlId="formTitle">
+        <Form.Label>Title Your Post:</Form.Label>
+        <Form.Control name="post-title" defaultValue={postDetails && postDetails.post_title} />
+      </Form.Group>
+      <Form.Group controlId="formDescription">
+        <Form.Label>Post description:</Form.Label>
+        <Form.Control name="post-description" as="textarea" rows={6} defaultValue={postDetails && postDetails.post_description}/>
+      </Form.Group>
+      <Form.Label>Select Forum:</Form.Label>
+      <Form.Group>
+      <Form.Select name="forum-selection">
+        { renderForumNames() }
+      </Form.Select>
+      </Form.Group>
+      <Stack gap={2} className="col-md-5 mx-auto">
+        <Button variant="secondary" type="submit">Save Post</Button>
+        <Button variant="outline-secondary" onClick={() => navigate(-1)} >Cancel</Button>
+      </Stack>
+    </Form>
   )
 }
 

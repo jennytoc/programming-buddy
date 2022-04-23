@@ -15,6 +15,8 @@ function NavBar() {
             <Nav.Link as={Link} to="/forum">Forum</Nav.Link>
             <Nav.Link as={Link} to="/members">Members</Nav.Link>
             <Nav.Link as={Link} to="/compiler">Compiler</Nav.Link>
+            <Nav.Link as={Link} to="/news">News</Nav.Link>
+            <Nav.Link as={Link} to="/contests">Contests</Nav.Link>
           </Nav>
           </Container>
           </Navbar.Collapse>

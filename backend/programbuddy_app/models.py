@@ -3,14 +3,6 @@ from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profiles", primary_key=True)
-    about = models.TextField()
-    profile_pic = models.ImageField(null=True, blank=True)
-
-    def __str__(self):
-        return f"User: {self.user}"
-
-class Language(models.Model):
     class LanguageName(models.TextChoices):
         JAVASCRIPT = 'JS', _('JavaScript')
         PYTHON = 'PY', _('Python')
@@ -25,12 +17,20 @@ class Language(models.Model):
         INTERMEDIATE = 'INT', _('Intermediate')
         BEGINNER = 'BEG', _('Beginner')
 
+    class Gender(models.TextChoices):
+        FEMALE = 'FM', _('Female')
+        MALE = 'ML', _('Male')
+        PREF = 'PF', _('Prefer not to say')
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profiles", primary_key=True)
+    about = models.TextField()
+    profile_pic = models.ImageField(null=True, blank=True, default='default-pic.png')
+    gender = models.CharField(max_length=2, choices=Gender.choices, default=Gender.PREF)
     language = models.CharField(max_length=2, choices=LanguageName.choices, default=LanguageName.JAVASCRIPT)
     proficiency = models.CharField(max_length=3, choices=ProficiencyLevel.choices, default=ProficiencyLevel.BEGINNER)
-    user = models.ManyToManyField(User)
 
     def __str__(self):
-        return f"Language: {self.language}, Proficiency: {self.proficiency}, User: {self.user}"
+        return f"User: {self.user}, Language: {self.language}, Gender: {self.gender}"
 
 class Forum(models.Model):
     forum_title = models.CharField(max_length=255)

@@ -1,0 +1,14 @@
+[
+  {
+    "value" : "ADV",
+    "label" : "Advanced"
+  },
+  {
+    "value" : "INT",
+    "label" : "Intermediate"
+  },
+  {
+    "value" : "BEG",
+    "label" : "Beginner"
+  }
+]

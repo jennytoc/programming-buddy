@@ -25,26 +25,36 @@ class UserProfileViewSet(ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
 
-class LanguageViewSet(ModelViewSet):
-    queryset = Language.objects.all()
-    serializer_class = LanguageSerializer
+    def perform_update(self, serializer):
+        print("USER:", self.request.user)
+        return super().perform_update(serializer)
+
+    def get_permissions(self):
+        if self.request.method == "GET":
+            return (permissions.AllowAny(),)
+        # elif self.request.method == "POST":
+        #     return(permissions.IsAuthenticated(),)
+        elif self.request.method == "PATCH":
+            return (permissions.IsAuthenticated(),)
+        return (permissions.IsAuthenticatedOrReadOnly(),)
 
 class ForumViewSet(ModelViewSet): # Gonna change to add admin privileges 
     queryset = Forum.objects.all()
     serializer_class = ForumSerializer
 
-class PostViewSet(ModelViewSet, PostUserPermission): # Change to only let users comment
+class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
     def perform_create(self, serializer):
-
         serializer.save(user=self.request.user) # auto-assign user id
         return super().perform_create(serializer)
 
     def get_permissions(self):
         if self.request.method == "GET":
             return (permissions.AllowAny(),)
+        # elif self.request.method == "POST":
+        #     return(permissions.IsAuthenticated(),)
         elif self.request.method == "DELETE":
             return (permissions.IsAuthenticated(),)
         elif self.request.method == "PATCH":
@@ -52,21 +62,28 @@ class PostViewSet(ModelViewSet, PostUserPermission): # Change to only let users 
         return (permissions.IsAuthenticatedOrReadOnly(),)
 
     def perform_update(self, serializer):
-        # current_post = serializer.instance
         print("USER:", self.request.user)
-        # if current_post.user != self.request.user:
-        #     raise JsonResponse({"error":"unable to edit post"}, status=403)
         return super().perform_update(serializer)
 
-
-class CommentViewSet(ModelViewSet, PostUserPermission):
+class CommentViewSet(ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+        return super().perform_create(serializer)
+
+    def perform_update(self, serializer):
+        print("USER:", self.request.user)
+        return super().perform_update(serializer)
 
     def get_permissions(self):
-        if self.request.method == "DELETE":
+        if self.request.method == "GET":
+            return (permissions.AllowAny(),)
+        # elif self.request.method == "POST":
+        #     return(permissions.IsAuthenticated(),)
+        elif self.request.method == "DELETE":
+            return (permissions.IsAuthenticated(),)
+        elif self.request.method == "PATCH":
             return (permissions.IsAuthenticated(),)
         return (permissions.IsAuthenticatedOrReadOnly(),)

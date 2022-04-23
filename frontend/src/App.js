@@ -15,14 +15,20 @@ import LoginPage from './pages/authenticate/LoginPage';
 import ForumPage from './pages/forum/ForumPage';
 import PostListPage from './pages/forum/PostListPage';
 import PostDetailsPage from './pages/forum/PostDetailsPage';
+import CreatePost from './pages/forum/CreatePost';
+import EditPost from './pages/forum/EditPost';
 // members
 import MembersPage from './pages/members/MembersPage';
 import ProfilePage from './pages/members/ProfilePage';
-import CreatePost from './pages/forum/CreatePost';
-import EditPost from './pages/forum/EditPost';
+import EditProfile from './pages/members/EditProfile';
 // compiler
 import IDEPage from './pages/coding/IDEPage';
 import SelectIDE from './pages/coding/SelectIDE';
+// news
+import NewsPage from './pages/news/NewsPage';
+// contest
+import ContestPage from './pages/contest/ContestPage';
+
 
 function App() {
   // state
@@ -46,9 +52,15 @@ function App() {
 
           <Route path="/members" element={ <MembersPage/> } />
           <Route path="/members/:memberId" element={ <ProfilePage/> } />
+          <Route path="/members/:memberId/edit-profile" element={ <EditProfile/> } />
 
           <Route path="/compiler" element={ <SelectIDE /> } />
           <Route path="/compiler/:language/:level" element={ <IDEPage /> } />
+
+          <Route path="/news" element={ <NewsPage /> } />
+
+          <Route path="/contests" element={ <ContestPage /> } />
+
         </Routes>
       </HashRouter>
     </div>

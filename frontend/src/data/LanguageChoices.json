@@ -1,0 +1,30 @@
+[
+  {
+    "value" : "JS",
+    "label" : "JavaScript"
+  },
+  {
+    "value" : "PY",
+    "label" : "Python"
+  },
+  {
+    "value" : "JV",
+    "label" : "Java"
+  },
+  {
+    "value" : "CS",
+    "label" : "C#"
+  },
+  {
+    "value" : "CP",
+    "label" : "C++"
+  },
+  {
+    "value" : "PH",
+    "label" : "PHP"
+  },
+  {
+    "value" : "SW",
+    "label" : "Swift"
+  }
+]
