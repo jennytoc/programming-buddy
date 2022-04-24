@@ -5,13 +5,15 @@ import ProfileRender from "../../components/members/ProfileRender"
 function CreateProfile(props) {
   const navigate = useNavigate()
   const { memberId } = useParams()
+  const itemUser = "users"
+  const itemProfiles = "user-profiles"
 
   // event handlers
   const handleEditProfile = async (event) => {
     event.preventDefault()
 
     const profileData = {
-      user: memberId,
+      user: props.username.user_id,
       about: event.target.elements["about"].value,
       gender: event.target.elements["gender-select"].value,
       language: event.target.elements["language-select"].value,
@@ -23,8 +25,8 @@ function CreateProfile(props) {
       last_name: event.target.elements["last-name"].value,
     }
 
-    const dataForUser = await ProBuddyAPI.editUser(memberId, userData)
-    const data = await ProBuddyAPI.createProfile(profileData)
+    const dataForUser = await ProBuddyAPI.editItems(itemUser, memberId, userData)
+    const data = await ProBuddyAPI.createItems(itemProfiles, profileData)
     if (data && dataForUser) {
       console.log("RECEIVED DATA", data)
       navigate(`/members/${memberId}`)

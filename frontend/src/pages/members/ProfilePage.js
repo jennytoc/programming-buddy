@@ -5,6 +5,8 @@ import "./MembersStyle.css"
 import {Button} from "react-bootstrap"
 
 function ProfilePage(props) {
+  const item = "user-profiles"
+
   // params
   const { memberId } = useParams()
 
@@ -17,7 +19,7 @@ function ProfilePage(props) {
   }, [])
 
   const loadProfile = async () => {
-    const data = await ProBuddyAPI.getProfile(memberId)
+    const data = await ProBuddyAPI.getItemById(item, memberId)
     setMemberDetails(data ? data : null)
   }
   console.log("IMAGE", memberDetails && memberDetails.profile_pic)

@@ -58,13 +58,6 @@ ProBuddyAPI.deleteItem = async (item, itemId) => {
   )
 }
 
-// Edit user
-ProBuddyAPI.editUser = async (userId, userData) => {
-  return await apiHelpers.tryCatchFetch(
-    () => axios.patch(`${BASE_URL}/users/${userId}/`, userData, apiHelpers.getCsrfConfig())
-  )
-}
-
 // Create Profile
 ProBuddyAPI.createProfile = async (userData) => {
   return await apiHelpers.tryCatchFetch(
