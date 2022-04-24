@@ -6,9 +6,10 @@ function PostRender(props) {
 
   // event handlers
   const renderComments = () => {
+    const item = "comments"
     return props.commentsList.map((comment)=> {
       const handleDeleteComment = async () => {
-        const data = await ProBuddyAPI.deleteComment(comment.id)
+        const data = await ProBuddyAPI.deleteItem(item, comment.id)
         if (data) {
           props.removeComment(comment.id)
         }
@@ -22,7 +23,8 @@ function PostRender(props) {
   }
 
   const handleDeletePost = async () => {
-    const data = await ProBuddyAPI.deletePost(props.id)
+    const item = "posts"
+    const data = await ProBuddyAPI.deleteItem(item, props.id)
     if (data) {
       navigate(`/forum/${props.forum_value}`)
     }

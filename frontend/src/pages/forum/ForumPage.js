@@ -4,7 +4,7 @@ import ProBuddyAPI from "../../api/ProBuddyAPI";
 import ForumRender from "../../components/forum/ForumRender";
 
 function ForumPage() {
-  
+  const item = "forums"
   // states
   const [forumLists, setForumLists] = useState([])
 
@@ -14,7 +14,7 @@ function ForumPage() {
   }, []) // Change once we add authentication features for admin
 
   const loadForumLists = async () =>{
-    const data = await ProBuddyAPI.getAllForums()
+    const data = await ProBuddyAPI.getAllItems(item)
     setForumLists(data ? data : [] )
   }
 

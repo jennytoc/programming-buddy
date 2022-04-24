@@ -21,6 +21,7 @@ import EditPost from './pages/forum/EditPost';
 import MembersPage from './pages/members/MembersPage';
 import ProfilePage from './pages/members/ProfilePage';
 import EditProfile from './pages/members/EditProfile';
+import CreateProfile from './pages/members/CreateProfile';
 // compiler
 import IDEPage from './pages/coding/IDEPage';
 import SelectIDE from './pages/coding/SelectIDE';
@@ -52,6 +53,7 @@ function App() {
 
           <Route path="/members" element={ <MembersPage/> } />
           <Route path="/members/:memberId" element={ <ProfilePage/> } />
+          <Route path="/members/:memberId/create-profile" element={ <CreateProfile/> } />
           <Route path="/members/:memberId/edit-profile" element={ <EditProfile/> } />
 
           <Route path="/compiler" element={ <SelectIDE /> } />

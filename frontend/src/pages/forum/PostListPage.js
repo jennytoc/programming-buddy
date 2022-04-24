@@ -7,6 +7,7 @@ import PostList from "../../components/forum/PostList";
 function PostListPage(props) {
   // params
   const { section } = useParams()
+  const item = "posts"
 
   // states
   const [postLists, setPostLists] = useState([])
@@ -18,7 +19,7 @@ function PostListPage(props) {
 
   const loadPostLists = async () =>{
     const posts =[]
-    const data = await ProBuddyAPI.getAllPosts()
+    const data = await ProBuddyAPI.getAllItems(item)
     for (let i=0; i < data.length; i++) {
       if (data[i].forum_value === section) {
         posts.push(data[i])

@@ -1,6 +1,5 @@
 import axios from "axios"
 import apiHelpers from "./ApiHelpers"
-
 const ProBuddyAPI = {}
 const BASE_URL = "http://localhost:8000" // Backend
 
@@ -24,80 +23,38 @@ ProBuddyAPI.logout = async () => {
   )
 }
 
-// Get forums
-ProBuddyAPI.getAllForums = async () => {
+// Get items
+ProBuddyAPI.getAllItems = async (item) => {
   return await apiHelpers.tryCatchFetch(
-    () => axios.get(`${BASE_URL}/forums/`, apiHelpers.getCsrfConfig())
+    () => axios.get(`${BASE_URL}/${item}/`, apiHelpers.getCsrfConfig)
   )
 }
 
-// Get posts
-ProBuddyAPI.getAllPosts = async () => {
+// Get item by id
+ProBuddyAPI.getItemById = async (item, itemId) => {
   return await apiHelpers.tryCatchFetch(
-    () => axios.get(`${BASE_URL}/posts/`, apiHelpers.getCsrfConfig())
+    () => axios.get(`${BASE_URL}/${item}/${itemId}/`, apiHelpers.getCsrfConfig())
   )
 }
 
-// Create posts
-ProBuddyAPI.createPost = async (postData) => {
+// Create items
+ProBuddyAPI.createItems = async (item, itemData) => {
   return await apiHelpers.tryCatchFetch(
-    () => axios.post(`${BASE_URL}/posts/`, postData, apiHelpers.getCsrfConfig())
+    () => axios.post(`${BASE_URL}/${item}/`, itemData, apiHelpers.getCsrfConfig())
   )
 }
 
-// Edit posts
-ProBuddyAPI.editPost = async (postId, postData) => {
+// Edit items
+ProBuddyAPI.editItems = async (item, itemId, itemData) => {
   return await apiHelpers.tryCatchFetch(
-    () => axios.patch(`${BASE_URL}/posts/${postId}/`, postData, apiHelpers.getCsrfConfig())
+    () => axios.patch(`${BASE_URL}/${item}/${itemId}/`, itemData, apiHelpers.getCsrfConfig())
   )
 }
 
-// Delete post
-ProBuddyAPI.deletePost = async (postId) => {
+// Delete item
+ProBuddyAPI.deleteItem = async (item, itemId) => {
   return await apiHelpers.tryCatchFetch(
-    () => axios.delete(`${BASE_URL}/posts/${postId}/`, apiHelpers.getCsrfConfig())
-  )
-}
-
-// Get post by id
-ProBuddyAPI.getPostById = async (postId) => {
-  return await apiHelpers.tryCatchFetch(
-    () => axios.get(`${BASE_URL}/posts/${postId}/`, apiHelpers.getCsrfConfig())
-  )
-}
-
-// Get comments
-ProBuddyAPI.getAllComments = async () => {
-  return await apiHelpers.tryCatchFetch(
-    () => axios.get(`${BASE_URL}/comments/`, apiHelpers.getCsrfConfig())
-  )
-}
-
-// Create comment
-ProBuddyAPI.createComment = async (commentData) => {
-  return await apiHelpers.tryCatchFetch(
-    () => axios.post(`${BASE_URL}/comments/`, commentData, apiHelpers.getCsrfConfig())
-  )
-}
-
-// Edit comment
-ProBuddyAPI.editComment = async (commentId, commentData) => {
-  return await apiHelpers.tryCatchFetch(
-    () => axios.patch(`${BASE_URL}/comments/${commentId}/`, commentData, apiHelpers.getCsrfConfig())
-  )
-}
-
-// Delete comment
-ProBuddyAPI.deleteComment = async (commentId) => {
-  return await apiHelpers.tryCatchFetch(
-    () => axios.delete(`${BASE_URL}/comments/${commentId}/`, apiHelpers.getCsrfConfig())
-  )
-}
-
-// Get users
-ProBuddyAPI.getAllUsers = async () => {
-  return await apiHelpers.tryCatchFetch(
-    () => axios.get(`${BASE_URL}/users/`, apiHelpers.getCsrfConfig())
+    () => axios.delete(`${BASE_URL}/${item}/${itemId}/`, apiHelpers.getCsrfConfig())
   )
 }
 
@@ -108,17 +65,10 @@ ProBuddyAPI.editUser = async (userId, userData) => {
   )
 }
 
-// Get profile by ID
-ProBuddyAPI.getProfile = async (userId) => {
+// Create Profile
+ProBuddyAPI.createProfile = async (userData) => {
   return await apiHelpers.tryCatchFetch(
-    () => axios.get(`${BASE_URL}/user-profiles/${userId}/`, apiHelpers.getCsrfConfig())
-  )
-}
-
-// Edit posts
-ProBuddyAPI.editProfile = async (userId, userData) => {
-  return await apiHelpers.tryCatchFetch(
-    () => axios.patch(`${BASE_URL}/user-profiles/${userId}/`, userData, apiHelpers.getCsrfConfig())
+    () => axios.post(`${BASE_URL}/user-profiles/`, userData, apiHelpers.getCsrfConfig())
   )
 }
 

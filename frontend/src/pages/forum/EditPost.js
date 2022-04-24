@@ -6,6 +6,7 @@ import {Form, Button, Stack} from 'react-bootstrap'
 function EditPost(props) {
   const navigate = useNavigate()
   const { postId } = useParams()
+  const itemPost = "posts"
 
   // states
   const [forumLists, setForumLists] = useState([])
@@ -17,7 +18,8 @@ function EditPost(props) {
   }, []) // Change once we add authentication features for admin
 
   const loadForumLists = async () =>{
-    const data = await ProBuddyAPI.getAllForums()
+    const item = "forums"
+    const data = await ProBuddyAPI.getAllItems(item)
     setForumLists(data ? data : [] )
   }
 
@@ -26,7 +28,7 @@ function EditPost(props) {
   }, [])
 
   const loadPost = async () => {
-    const data = await ProBuddyAPI.getPostById(postId)
+    const data = await ProBuddyAPI.getItemById(itemPost, postId)
     setPostDetails(data ? data : null)
   }
 
@@ -38,10 +40,12 @@ function EditPost(props) {
       post_title: event.target.elements["post-title"].value,
       post_description: event.target.elements["post-description"].value,
       forum: event.target.elements["forum-selection"].value, 
-      // user: props.username.user_id
     }
+
     console.log("SENDING POST DATA...", postData)
-    const data = await ProBuddyAPI.editPost(postId, postData)
+
+    const data = await ProBuddyAPI.editItems(itemPost, postId, postData)
+
     if (data) {
       console.log("RECEIVED DATA", data)
       navigate(`/forum/${data.forum_value}/${data.id}`)
@@ -55,19 +59,6 @@ function EditPost(props) {
   }
 
   return (
-    // <div className="add-post">
-    //   <form onSubmit={ handleCreatePost }>
-    //     <label>Post Title</label>
-    //     <input name="post-title" defaultValue={postDetails && postDetails.post_title}/>
-    //     <label>Description</label>
-    //     <textarea id="post-description" name="post-description" rows="10" cols="90" defaultValue={postDetails && postDetails.post_description}></textarea>
-    //     <label>Forum</label>
-    //     <select name="forum-selection">
-    //       { renderForumNames() }
-    //     </select>
-    //     <button type="submit">Save Post</button>
-    //   </form>
-    // </div>
     <Form onSubmit={ handleEditPost} method="POST">
       <Form.Group className="mb-3" controlId="formTitle">
         <Form.Label>Title Your Post:</Form.Label>

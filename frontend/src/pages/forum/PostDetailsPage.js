@@ -4,8 +4,7 @@ import ProBuddyAPI from "../../api/ProBuddyAPI";
 import PostRender from "../../components/forum/PostRender";
 
 function PostDetailsPage(props) {
-  // const currentUser = props.username
-  // console.log("currentUser:", currentUser)
+  const itemComment = "comments"
   // params
   const { section, postId } = useParams()
 
@@ -19,7 +18,8 @@ function PostDetailsPage(props) {
   }, [])
 
   const loadPost = async () => {
-    const data = await ProBuddyAPI.getPostById(postId)
+    const item = "posts"
+    const data = await ProBuddyAPI.getItemById(item, postId)
     setPostDetails(data ? data : null)
   }
 
@@ -29,7 +29,7 @@ function PostDetailsPage(props) {
 
   const loadComments = async () => {
     const comments = []
-    const data = await ProBuddyAPI.getAllComments()
+    const data = await ProBuddyAPI.getAllItems(itemComment)
     for (let i=0; i < data.length; i++) {
       if(data[i].post.id == postId) {
         comments.push(data[i])
@@ -53,10 +53,11 @@ function PostDetailsPage(props) {
       comment_description: event.target.elements["comment-description"].value,
       post: postId,
       user: props.username.user_id
-      
     }
     console.log("SENDING POST DATA...", commentData)
-    const data = await ProBuddyAPI.createComment(commentData)
+
+    const data = await ProBuddyAPI.createItems(itemComment, commentData)
+
     if (data) {
       console.log("RECEIVED DATA", data)
       setCommentsList([...commentsList, commentData])

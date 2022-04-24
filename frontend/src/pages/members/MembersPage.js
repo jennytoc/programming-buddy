@@ -12,7 +12,8 @@ function MembersPage() {
   }, [])
   
   const loadMembers = async () =>{
-    const data = await ProBuddyAPI.getAllUsers()
+    const item = "users"
+    const data = await ProBuddyAPI.getAllItems(item)
     setMembers(data ? data : [] )
   }
   

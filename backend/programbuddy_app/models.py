@@ -23,8 +23,8 @@ class UserProfile(models.Model):
         PREF = 'PF', _('Prefer not to say')
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profiles", primary_key=True)
-    about = models.TextField()
-    profile_pic = models.ImageField(null=True, blank=True, default='default-pic.png')
+    about = models.TextField(null=True, blank=True)
+    profile_pic = models.URLField(max_length=300, null=True, blank=True, default='https://res.cloudinary.com/dbi5z0la5/image/upload/v1650772943/my-uploads/kkievty6jz98l7pg7sez.png')
     gender = models.CharField(max_length=2, choices=Gender.choices, default=Gender.PREF)
     language = models.CharField(max_length=2, choices=LanguageName.choices, default=LanguageName.JAVASCRIPT)
     proficiency = models.CharField(max_length=3, choices=ProficiencyLevel.choices, default=ProficiencyLevel.BEGINNER)

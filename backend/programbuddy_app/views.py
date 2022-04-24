@@ -25,6 +25,10 @@ class UserProfileViewSet(ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user) # auto-assign user id
+        return super().perform_create(serializer)
+
     def perform_update(self, serializer):
         print("USER:", self.request.user)
         return super().perform_update(serializer)

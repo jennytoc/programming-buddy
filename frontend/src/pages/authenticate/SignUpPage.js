@@ -17,7 +17,7 @@ function SignUpPage(props) {
     const data = await ProBuddyAPI.signup(signupData)
 
     if (data) {
-      navigate("/login")
+      navigate(`/login`)
     }
   }
 
