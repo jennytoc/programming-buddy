@@ -1,5 +1,7 @@
 import ProBuddyAPI from "../../api/ProBuddyAPI";
 import { useNavigate } from "react-router-dom"
+import { Form, Button, Container } from "react-bootstrap"
+import './AuthenticateStyles.css'
 
 function LoginPage(props) {
   // router params
@@ -25,19 +27,20 @@ function LoginPage(props) {
   }
 
   return (
-    <div>
-      <h4>Log In</h4>
-
-      <form onSubmit={ handleLogin } method="POST">
-        <label>Username:</label>
-        <input type="text" name="username" />
-        <br/>
-        <label>Password:</label>
-        <input type="password" name="password" />
-        <br />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <Container className="auth-cont">
+      <Form onSubmit={ handleLogin } method="POST" className="form">
+        <h1 className="form-title">Login to your account</h1>
+        <Form.Group className="mt-3">
+          <Form.Label>Username:</Form.Label>
+          <Form.Control type="text" name="username" placeholder="Username"/>
+        </Form.Group>
+        <Form.Group className="mt-3">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control type="password" name="password" placeholder="Password"/>
+        </Form.Group>
+        <Button variant="outline-light" className="submit" type="submit" style={{backgroundColor: "#1B4965"}}>Submit</Button>
+      </Form>
+    </Container>
   )
 }
 

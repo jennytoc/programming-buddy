@@ -2,6 +2,38 @@
   background-color: #1E5C82;
 }
 
+.nav-link {
+  font-size: 18px;
+}
+
 .login-bar {
   background-color: white;
+}
+
+.logo {
+  width: 18%;
+  margin-left: 50%;
+}
+
+.footer-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  width: 5%;
+  margin: 2%
+}
+
+.footer-div {
+  border-top: 1px solid rgba(85, 85, 85, 0.3);
+  height: 15vh;
+}
+
+.footer-text {
+  display: inline;
+  align-items: center;
+  padding-left: 50%;
+  font-size: 15px;
 }

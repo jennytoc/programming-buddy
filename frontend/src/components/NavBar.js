@@ -10,17 +10,16 @@ function NavBar() {
       <Navbar className='navbar' variant="dark">
           <Navbar.Collapse>
           <Container>
-          <Nav className="justify-content-center">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/forum">Forum</Nav.Link>
-            <Nav.Link as={Link} to="/members">Members</Nav.Link>
-            <Nav.Link as={Link} to="/compiler">Compiler</Nav.Link>
-            <Nav.Link as={Link} to="/news">News</Nav.Link>
-            <Nav.Link as={Link} to="/contests">Contests</Nav.Link>
-          </Nav>
+            <Nav className="justify-content-center">
+              <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to="/forum">Forum</Nav.Link>
+              <Nav.Link as={Link} to="/members">Members</Nav.Link>
+              <Nav.Link as={Link} to="/news">News</Nav.Link>
+              <Nav.Link as={Link} to="/contests">Contests</Nav.Link>
+              <Nav.Link as={Link} to="/compiler">Compiler</Nav.Link>
+            </Nav>
           </Container>
           </Navbar.Collapse>
-          
       </Navbar>
     </div>
   )

@@ -1,0 +1,56 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('/src/images/Person-programming.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.header-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.text-div {
+  position: flex;
+  width: 45%;
+  padding: 20px;
+  margin-bottom: 30px;
+  animation: fadeIn 2s;
+}
+
+.header-text {
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  color: #dddddd;
+  font-size: 4vw;
+}
+
+.header-btn {
+  animation: fadeIn 4s;
+}
+
+.feature-title {
+  font-size: 4em;
+}
+
+.card{
+  border: 0;
+}
+
+/* Animation effects */
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}

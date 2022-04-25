@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import ProBuddyAPI from "../../api/ProBuddyAPI";
+import { Form, Button, Row, Col } from "react-bootstrap"
+import './AuthenticateStyles.css'
 
 function SignUpPage(props) {
   // router params
@@ -11,7 +13,10 @@ function SignUpPage(props) {
 
     let signupData = {
       username: event.target.elements["username"].value,
-      password: event.target.elements["password"].value
+      password: event.target.elements["password"].value,
+      email: event.target.elements["email"].value,
+      first_name: event.target.elements["first-name"].value,
+      last_name: event.target.elements["last-name"].value
     }
     console.log("SIGN UP:", signupData)
     const data = await ProBuddyAPI.signup(signupData)
@@ -23,17 +28,30 @@ function SignUpPage(props) {
 
   // render
   return (
-    <div>
-      <h4>Sign Up</h4>
-      <form onSubmit={ handleSignUp } method="POST">
-        <label>Username:</label>
-        <input type="text" name="username" />
-        <br />
-        <label>Password:</label>
-        <input type="password" name="password" />
-        <br />
-        <button type="submit">Sign Up</button>
-      </form>
+    <div className="auth-cont">
+      <Form onSubmit={ handleSignUp } method="POST">
+        <h1 className="form-title">Sign Up</h1>
+        <Form.Group as={Row} className="mt-3">
+          <Col>
+            <Form.Control type="text" name="first-name" placeholder="First Name"/>
+          </Col>
+          <Col>
+            <Form.Control type="text" name="last-name" placeholder="Last Name"/>
+          </Col>
+        </Form.Group>
+        <Form.Group className="mt-3">
+          <Form.Control type="text" name="username" placeholder="Username"/>
+        </Form.Group>
+        <Form.Group className="mt-3">
+          <Form.Control type="password" name="password" placeholder="Password"/>
+        </Form.Group>
+        <Form.Group className="mt-3">
+          <Form.Control type="email" name="email" placeholder="Email"/>
+        </Form.Group>
+        <Form.Group className="mt-3">
+        </Form.Group>
+        <Button variant="outline-light" className="submit" type="submit" style={{backgroundColor: "#1B4965"}}>Create Account</Button>
+      </Form>
     </div>
   )
 }

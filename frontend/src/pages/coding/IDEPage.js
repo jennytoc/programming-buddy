@@ -1,29 +1,28 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom"
-import codeWarsID from '../../api/codeWarsID.json'
+import LanguageChoices from "../../data/LanguageChoices.json"
 
 function IDEPage() {
-  const { language, level } = useParams();
-  const codeId = null
+  const { language } = useParams();
 
   // state
-  const [idList, setIdList] = useState(codeWarsID)
-  const [code, setCode] = useState(null)
+  const [languageSrc, setLanguageSrc] = useState(null)
 
+  // Effect
   useEffect(()=>{
-    getCodeIdList()
+    getCompiler()
+    // eslint-disable-next-line
   }, [])
-  
-  const getCodeIdList = () => {
-    const newIdList = idList.filter((listId) => {
-      return listId.language == language && listId.level == level
+
+  const getCompiler = () => {
+    return LanguageChoices.map((item) => {
+      if (language === item.value) {
+        setLanguageSrc(item)
+      }
     })
-    setIdList(newIdList)
   }
 
-  console.log("IDLIST", idList)
-
+  // JDoodle IDE Script
   useEffect(()=> {
     const script = document.createElement('script');
 
@@ -37,29 +36,12 @@ function IDEPage() {
 
   }, [])
 
-  useEffect(()=> {
-    axios.get(`https://www.codewars.com/api/v1/code-challenges/${codeId}`).then(
-      (response) => {
-        const data = response.data
-        console.log(data)
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
-  }, [])
-  
   return (
     <div>
-    <div data-pym-src="https://www.jdoodle.com/embed/v0/4Jhn"></div>
-    <form action="https://www.jdoodle.com/api/redirect-to-post/online-java-compiler" method="post">
-  Script: <textarea name="initScript" rows="8" cols="80"></textarea>
-  <input type="submit" value="Submit" />
-</form>
+      <div><h2>{ languageSrc && languageSrc.label } IDE </h2></div>
+      <div data-pym-src={ languageSrc && languageSrc.source }></div>
     </div>
   )
 }
 
 export default IDEPage;
-
-{/* <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script> */}

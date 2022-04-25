@@ -1,30 +1,37 @@
 [
   {
     "value" : "JS",
-    "label" : "JavaScript"
+    "label" : "JavaScript",
+    "source": "https://www.jdoodle.com/embed/v0/4JJN"
   },
   {
     "value" : "PY",
-    "label" : "Python"
+    "label" : "Python",
+    "source": "https://www.jdoodle.com/embed/v0/4Jhn"
   },
   {
     "value" : "JV",
-    "label" : "Java"
+    "label" : "Java",
+    "source": "https://www.jdoodle.com/embed/v0/4JJO"
   },
   {
     "value" : "CS",
-    "label" : "C#"
+    "label" : "C#",
+    "source": "https://www.jdoodle.com/embed/v0/4JJQ"
   },
   {
     "value" : "CP",
-    "label" : "C++"
+    "label" : "C++",
+    "source": "https://www.jdoodle.com/embed/v0/4JJR"
   },
   {
     "value" : "PH",
-    "label" : "PHP"
+    "label" : "PHP",
+    "source": "https://www.jdoodle.com/embed/v0/4JJS"
   },
   {
     "value" : "SW",
-    "label" : "Swift"
+    "label" : "Swift",
+    "source": "https://www.jdoodle.com/embed/v0/4JJT"
   }
 ]

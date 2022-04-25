@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import LanguageChoices from "../../data/LanguageChoices.json"
 
 function SelectIDE() {
   const navigate = useNavigate()
@@ -7,32 +8,26 @@ function SelectIDE() {
     event.preventDefault()
 
     const selectedData = {
-      language: event.target.elements["language-select"].value,
-      level: event.target.elements["level-select"].value
+      language: event.target.elements["language-select"].value
     }
     if (selectedData) {
-      navigate(`/compiler/${selectedData.language}/${selectedData.level}`)
+      navigate(`/compiler/${selectedData.language}`)
     }
+  }
 
+  // render
+  const renderLanguageChoices = () => {
+    return LanguageChoices.map((language, index) => {
+      return <option key={index} value={language.value}>{language.label}</option>
+    })
   }
 
   return (
     <div>
-      <h2>Select Language and Dificulty</h2>
+      <h2>Select Language</h2>
       <form onSubmit={ handleSelection } method="POST">
       <select name="language-select">
-        <option value="JS">JavaScript</option>
-        <option value="PY">Python</option>
-        <option value="JV">Java</option>
-        <option value="CS">C#</option>
-        <option value="CP">C++</option>
-        <option value="PH">PHP</option>
-        <option value="SW">Swift</option>
-      </select>
-      <select name="level-select">
-        <option value="ADV">Advanced</option>
-        <option value="INT">Intermediate</option>
-        <option value="BEG">Beginner</option>
+        { renderLanguageChoices() }
       </select>
       <button type="submit">Submit</button>
       </form>

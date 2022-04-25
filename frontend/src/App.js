@@ -7,7 +7,7 @@ import NavBar from './components/NavBar';
 import LoginBar from './components/LoginBar';
 
 // Pages
-import HomePage from './pages/HomePage';
+import HomePage from './pages/homepage/HomePage';
 // authenticate
 import SignUpPage from './pages/authenticate/SignUpPage';
 import LoginPage from './pages/authenticate/LoginPage';
@@ -29,6 +29,8 @@ import SelectIDE from './pages/coding/SelectIDE';
 import NewsPage from './pages/news/NewsPage';
 // contest
 import ContestPage from './pages/contest/ContestPage';
+// footer
+import Footer from './components/Footer';
 
 
 function App() {
@@ -57,13 +59,14 @@ function App() {
           <Route path="/members/:memberId/edit-profile" element={ <EditProfile/> } />
 
           <Route path="/compiler" element={ <SelectIDE /> } />
-          <Route path="/compiler/:language/:level" element={ <IDEPage /> } />
+          <Route path="/compiler/:language" element={ <IDEPage /> } />
 
           <Route path="/news" element={ <NewsPage /> } />
 
           <Route path="/contests" element={ <ContestPage /> } />
 
         </Routes>
+        <Footer />
       </HashRouter>
     </div>
   );

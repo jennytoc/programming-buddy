@@ -58,11 +58,4 @@ ProBuddyAPI.deleteItem = async (item, itemId) => {
   )
 }
 
-// Create Profile
-ProBuddyAPI.createProfile = async (userData) => {
-  return await apiHelpers.tryCatchFetch(
-    () => axios.post(`${BASE_URL}/user-profiles/`, userData, apiHelpers.getCsrfConfig())
-  )
-}
-
 export default ProBuddyAPI
