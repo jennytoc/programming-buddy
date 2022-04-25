@@ -16,10 +16,6 @@ class UserSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    language = serializers.SerializerMethodField()
-    proficiency = serializers.SerializerMethodField()
-    gender = serializers.SerializerMethodField()
-
     class Meta:
         model = UserProfile
         fields = '__all__'

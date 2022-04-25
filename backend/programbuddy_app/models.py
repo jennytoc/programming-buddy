@@ -4,30 +4,30 @@ from django.utils.translation import gettext_lazy as _
 
 class UserProfile(models.Model):
     class LanguageName(models.TextChoices):
-        JAVASCRIPT = 'JS', _('JavaScript')
-        PYTHON = 'PY', _('Python')
-        JAVA = 'JV', _('Java')
-        CSHARP = 'CS', _('C#')
-        CPLUS = 'CP', _('C++')
-        PHP = 'PH', _('PHP')
-        SWIFT = 'SW', _('Swift')
+        JAVASCRIPT = 'JavaScript', _('JavaScript')
+        PYTHON = 'Python', _('Python')
+        JAVA = 'Java', _('Java')
+        CSHARP = 'C#', _('C#')
+        CPLUS = 'C++', _('C++')
+        PHP = 'PHP', _('PHP')
+        SWIFT = 'Swift', _('Swift')
 
     class ProficiencyLevel(models.TextChoices):
-        ADVANCED = 'ADV', _('Advanced')
-        INTERMEDIATE = 'INT', _('Intermediate')
-        BEGINNER = 'BEG', _('Beginner')
+        ADVANCED = 'Advanced', _('Advanced')
+        INTERMEDIATE = 'Intermediate', _('Intermediate')
+        BEGINNER = 'Beginner', _('Beginner')
 
     class Gender(models.TextChoices):
-        FEMALE = 'FM', _('Female')
-        MALE = 'ML', _('Male')
-        PREF = 'PF', _('Prefer not to say')
+        FEMALE = 'Female', _('Female')
+        MALE = 'Male', _('Male')
+        PREF = 'Prefer not to say', _('Prefer not to say')
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profiles", primary_key=True)
     about = models.TextField(null=True, blank=True)
     profile_pic = models.URLField(max_length=300, null=True, blank=True, default='https://res.cloudinary.com/dbi5z0la5/image/upload/v1650772943/my-uploads/kkievty6jz98l7pg7sez.png')
-    gender = models.CharField(max_length=2, choices=Gender.choices, default=Gender.PREF)
-    language = models.CharField(max_length=2, choices=LanguageName.choices, default=LanguageName.JAVASCRIPT)
-    proficiency = models.CharField(max_length=3, choices=ProficiencyLevel.choices, default=ProficiencyLevel.BEGINNER)
+    gender = models.CharField(max_length=20, choices=Gender.choices, default=Gender.PREF)
+    language = models.CharField(max_length=20, choices=LanguageName.choices, default=LanguageName.JAVASCRIPT)
+    proficiency = models.CharField(max_length=20, choices=ProficiencyLevel.choices, default=ProficiencyLevel.BEGINNER)
 
     def __str__(self):
         return f"User: {self.user}, Language: {self.language}, Gender: {self.gender}"

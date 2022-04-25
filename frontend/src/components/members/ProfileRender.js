@@ -30,8 +30,8 @@ function ProfileRender(props) {
 
   // render
   const renderItems = ( itemList ) => {
-    return itemList.map((item) => {
-      return <option value={item.value}>{item.label}</option>
+    return itemList.map((item, index) => {
+      return <option key={index} value={item.label}>{item.label}</option>
     })
   }
 
@@ -63,9 +63,9 @@ function ProfileRender(props) {
           <Form.Label column sm={2}>Gender:</Form.Label>
           <Col>
             <Form.Select name="gender-select">
-              <option value="FM">Female</option>
-              <option value="ML">Male</option>
-              <option value="PF">Prefer not to say</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Prefer not to say">Prefer not to say</option>
             </Form.Select>
           </Col>
         </Form.Group>

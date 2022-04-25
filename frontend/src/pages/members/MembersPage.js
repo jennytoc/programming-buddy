@@ -45,13 +45,15 @@ function MembersPage() {
   // render
   const renderMembers = (membersList) => {
     return membersList.map((member) => {
+      console.log(member.id)
       return <MembersList key={ member.id } member={ member } />
+
     })
   }
 
   const renderFilterItems = (items) => {
-    return items.map((item) => {
-      return <option value={item.label}>{item.label}</option>
+    return items.map((item, index) => {
+      return <option key={index} value={item.label}>{item.label}</option>
     })
   }
 
@@ -68,10 +70,10 @@ function MembersPage() {
         </Form.Select>
         <Button variant="outline-light" className="submit" type="submit" style={{backgroundColor: "#1B4965"}}>Search</Button>
       </Form>
-      {/* { filterResults && filterResults.length > 0 ?
+      { filterResults && filterResults.length > 0 ?
         renderMembers(filterResults) :
         renderMembers(members)
-      }  */}
+      } 
     </div>
   )
 }
