@@ -4,23 +4,23 @@ from django.utils.translation import gettext_lazy as _
 
 class UserProfile(models.Model):
     class LanguageName(models.TextChoices):
-        JAVASCRIPT = 'JavaScript', _('JavaScript')
-        PYTHON = 'Python', _('Python')
-        JAVA = 'Java', _('Java')
-        CSHARP = 'C#', _('C#')
-        CPLUS = 'C++', _('C++')
-        PHP = 'PHP', _('PHP')
-        SWIFT = 'Swift', _('Swift')
+        JAVASCRIPT = 'JavaScript'
+        PYTHON = 'Python'
+        JAVA = 'Java'
+        CSHARP = 'C#'
+        CPLUS = 'C++'
+        PHP = 'PHP'
+        SWIFT = 'Swift'
 
     class ProficiencyLevel(models.TextChoices):
-        ADVANCED = 'Advanced', _('Advanced')
-        INTERMEDIATE = 'Intermediate', _('Intermediate')
-        BEGINNER = 'Beginner', _('Beginner')
+        ADVANCED = 'Advanced'
+        INTERMEDIATE = 'Intermediate'
+        BEGINNER = 'Beginner'
 
     class Gender(models.TextChoices):
-        FEMALE = 'Female', _('Female')
-        MALE = 'Male', _('Male')
-        PREF = 'Prefer not to say', _('Prefer not to say')
+        FEMALE = 'Female'
+        MALE = 'Male'
+        PREF = 'Prefer not to say'
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profiles", primary_key=True)
     about = models.TextField(null=True, blank=True)

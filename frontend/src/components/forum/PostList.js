@@ -1,20 +1,18 @@
-import { Card } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom"
-import ProBuddyAPI from "../../api/ProBuddyAPI"
 
-// Might change forum-div to ul
 function PostList(props) {
   return (
-    <Card>
-      <Card.Body>
-        <Card.Title>
-          <Link key={ props.post.id } to={ `/forum/${props.post.forum_value}/${props.post.id}` }>{ props.post.post_title }</Link>
-        </Card.Title>
-        <Card.Text>
-          Posted by: {props.post.user.username}
-        </Card.Text>
-      </Card.Body>
-    </Card>
+    <div className="topic-cont">
+      <Row className="topic-div">
+        <Col>
+          <h5><Link key={ props.post.id } to={ `/forum/${props.post.forum_value}/${props.post.id}` }>{ props.post.post_title }</Link></h5>
+        </Col>
+        <Col>
+          {props.post.user.username}
+        </Col>
+      </Row>
+    </div>
   )
 }
 

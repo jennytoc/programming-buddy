@@ -1,21 +1,15 @@
-import { Card } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom"
-import ProBuddyAPI from "../../api/ProBuddyAPI"
 
-// Might change forum-div to ul
 function ForumRender(props) {
+
   return (
-    <Card>
-      <Card.Body>
-        <Card.Title>
-          <Link key={ props.forum.id } to={ `/forum/${ props.forum.value }` }>{ props.forum.forum_title }
-          </Link>
-        </Card.Title>
-        <Card.Text>
-          <p>{ props.forum.forum_description }</p>
-        </Card.Text>
-      </Card.Body>
-    </Card>
+    <Row className="post-items">
+      <Col>
+        <h4 className="item-title"><Link key={ props.forum.id } to={ `/forum/${ props.forum.value }` }>{ props.forum.forum_title }</Link></h4>
+        <p className="item-text">{ props.forum.forum_description }</p>
+      </Col>
+    </Row>
   )
 }
 

@@ -19,7 +19,7 @@ function HomePage() {
       <Container as="section" className="feature-div mt-5 mb-5 p-5" fluid>
         <h1 className="feature-title">How It Works</h1>
         <CardGroup as={Row} className="justify-content-md-center" sm='auto' md='auto' lg='auto'>
-          <Card className="m-5">
+          <Card className="m-5 border-0">
             <Card.Img variant="top" src={require("../../images/Page1.png")}/>
             <Card.Body>
               <Card.Title>Sign up</Card.Title>
@@ -28,8 +28,8 @@ function HomePage() {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card className="m-5">
-            <Card.Img variant="top" src={require("../../images/Page2.png")} style={{height: 230}}/>
+          <Card className="m-5 border-0">
+            <Card.Img variant="top" src={require("../../images/Page2.png")}/>
             <Card.Body>
               <Card.Title>Set up your profile</Card.Title>
               <Card.Text>
@@ -37,7 +37,7 @@ function HomePage() {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card className="m-5">
+          <Card className="m-5 border-0">
             <Card.Img variant="top" src={require("../../images/Page3.png")}/>
             <Card.Body>
               <Card.Title>Check out the forums</Card.Title>
@@ -46,8 +46,8 @@ function HomePage() {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card className="m-5">
-            <Card.Img variant="top" src={require("../../images/Page4.png")} style={{height: 225}}/>
+          <Card className="m-5 border-0">
+            <Card.Img variant="top" src={require("../../images/Page4.png")}/>
             <Card.Body>
               <Card.Title>Participate in a contest</Card.Title>
               <Card.Text>

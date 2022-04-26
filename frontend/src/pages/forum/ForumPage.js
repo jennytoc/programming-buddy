@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import ProBuddyAPI from "../../api/ProBuddyAPI";
 import ForumRender from "../../components/forum/ForumRender";
+import './ForumStyles.css'
 
 function ForumPage() {
   const item = "forums"
@@ -21,17 +22,21 @@ function ForumPage() {
   // render
   const renderForumLists = () => {
     return forumLists.map((forum) => {
-      return <ForumRender key={ forum.id } forum={ forum } />
+      return <ForumRender key={forum.id} forum={ forum }/>
     })
   }
-  
 
   return (
     <div>
-      <Card border="info">
-        <Card.Header as="h4">Forums</Card.Header>
-          { renderForumLists() }
-      </Card>
+      <h1 className="forum-title">Forum</h1>
+      <div className="forum-item-div">
+        <Row className="forum-items">
+          <Col>
+            <h3 className="main-title">Section Title</h3>
+          </Col>
+        </Row>
+      </div>
+      { renderForumLists() }
     </div>
   )
 }

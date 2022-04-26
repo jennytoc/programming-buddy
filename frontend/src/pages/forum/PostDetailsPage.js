@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Col } from "react-bootstrap"
 import ProBuddyAPI from "../../api/ProBuddyAPI";
 import PostRender from "../../components/forum/PostRender";
+import './ForumStyles.css'
 
 function PostDetailsPage(props) {
   const itemComment = "comments"
@@ -67,10 +69,8 @@ function PostDetailsPage(props) {
   
 
   return (
-    <div>
-      <div>
+    <div className="whole-cont">
         <PostRender {...postDetails} commentsList={commentsList} removeComment={removeComment} section={section} postId={postId}/>
-      </div>
       <div className="comment-form">
         <form onSubmit={ handleCreateComment } method="POST">
           <label>Post A Comment</label>

@@ -34,10 +34,7 @@ function MembersPage() {
     const newMembers = memberProfile.filter((member)=> {
       return member.language === language && member.proficiency === proficiency
     })
-    console.log("languge", language)
-    console.log("proficiency", proficiency)
-    console.log("new members", newMembers)
-    if (newMembers.length != 0) {
+    if (newMembers.length !== 0) {
       setFilterResults(newMembers)
     }
   }
