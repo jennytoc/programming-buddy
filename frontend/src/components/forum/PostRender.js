@@ -19,7 +19,7 @@ function PostRender(props) {
         <div className="post-cont mt-3">
           <Row className="comment-title align-items-center justify-content-between">
             <Col className="col-3" style={{color: "white"}}>{comment && comment.comment_date_created}</Col>
-            <Col className="col-2"><Button className="delete-btn" onClick={ handleDeleteComment } variant="secondary">Delete Comment</Button></Col>
+            <Col className="col-2"><Button className="delete-btn" onClick={ handleDeleteComment } variant="light">Delete Comment</Button></Col>
           </Row>
           <Row className="detail-cont">
             <Col>

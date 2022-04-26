@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NewsArticles from "../../components/news/NewsArticles";
 import Pagination from "../../components/Pagination";
-import axios from "axios";
+import './NewsPgStyles.css'
 
 function NewsPage() {
   const axios = require("axios");
@@ -41,7 +41,10 @@ function NewsPage() {
   const paginate = pageNumber => setCurrentPage(pageNumber);
   
   return (
-    <div className="container mt-5">
+    <div>
+      <header className="news-header">
+      </header>
+      <h2 className="news-title">Check out what's tending in tech</h2>
       <NewsArticles articles={currentPosts} />
       <Pagination postsPerPage={postsPerPage} totalPosts={articles.length} paginate={paginate}/>
     </div>   

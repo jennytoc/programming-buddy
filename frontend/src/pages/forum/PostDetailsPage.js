@@ -63,6 +63,7 @@ function PostDetailsPage(props) {
     if (data) {
       console.log("RECEIVED DATA", data)
       setCommentsList([...commentsList, commentData])
+      loadComments()
     }
 
   }

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
-import { Form, Button } from "react-bootstrap"
+import { Form, Button, Row, Col } from "react-bootstrap"
 import ProBuddyAPI from "../../api/ProBuddyAPI";
 import MembersList from "../../components/members/MembersList";
 import LanguageChoices from "../../data/LanguageChoices.json"
 import LevelChoices from "../../data/LevelChoices.json"
+import './MembersStyle.css'
 
 function MembersPage() {
   // states
@@ -42,7 +43,6 @@ function MembersPage() {
   // render
   const renderMembers = (membersList) => {
     return membersList.map((member) => {
-      console.log(member.id)
       return <MembersList key={ member.id } member={ member } />
 
     })
@@ -57,16 +57,27 @@ function MembersPage() {
   console.log("FILTERS", filterResults)
   return (
     <div>
-      <h1>Members Page</h1>
-      <Form onSubmit={ handleFilter }>
-        <Form.Select name="filter-language">
-          { renderFilterItems(LanguageChoices) }
-        </Form.Select>
-        <Form.Select name="filter-level">
-          { renderFilterItems(LevelChoices) }
-        </Form.Select>
-        <Button variant="outline-light" className="submit" type="submit" style={{backgroundColor: "#1B4965"}}>Search</Button>
+      <h1 className="member-title">Members Page</h1>
+      <Form onSubmit={ handleFilter } className="filter-bar">
+        <Row className="align-items-center">
+          <Col xs={2}><Form.Label>Select language:</Form.Label></Col>
+          <Col xs={3}>
+          <Form.Select name="filter-language">
+            { renderFilterItems(LanguageChoices) }
+          </Form.Select>
+          </Col>
+          <Col xs={2}><Form.Label>Select proficiency:</Form.Label></Col>
+          <Col xs={3}>
+          <Form.Select name="filter-level">
+            { renderFilterItems(LevelChoices) }
+          </Form.Select>
+          </Col>
+          <Col xs={1}>
+          <Button variant="outline-light" className="submit" type="submit" style={{backgroundColor: "#1B4965"}}>Search</Button>
+          </Col>
+        </Row>
       </Form>
+
       { filterResults && filterResults.length > 0 ?
         renderMembers(filterResults) :
         renderMembers(members)

@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import LanguageChoices from "../../data/LanguageChoices.json"
+import { Button, Form } from "react-bootstrap"
+import './IDEStyles.css'
 
 function SelectIDE() {
   const navigate = useNavigate()
@@ -24,13 +26,13 @@ function SelectIDE() {
 
   return (
     <div>
-      <h2>Select Language</h2>
-      <form onSubmit={ handleSelection } method="POST">
-      <select name="language-select">
+      <h2 className="lang-title">Select Language</h2>
+      <Form onSubmit={ handleSelection } method="POST" className="form-cont">
+        <Form.Select name="language-select">
         { renderLanguageChoices() }
-      </select>
-      <button type="submit">Submit</button>
-      </form>
+        </Form.Select>
+        <Button type="submit" style={{backgroundColor: '#1B4965'}} className="mt-4 mb-4">Submit</Button>
+      </Form>
     </div>
   )
 }

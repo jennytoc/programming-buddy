@@ -1,0 +1,11 @@
+.contest-head {
+  height: 90vh;
+  overflow: hidden;
+  background-image: url('/src/images/keyboard-hand.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* .news-card {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+} */

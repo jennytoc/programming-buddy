@@ -3,10 +3,10 @@ import { Card, Row, Col, Button, Container} from "react-bootstrap";
 
 const NewsArticles = ({articles}) => {
   const getColumnsForRow = () => {
-    let posts = articles.map((post, index)=> {
+    let posts = articles.map((post)=> {
       return (
-        <Col>
-          <Card key={post.id}>
+        <Col className="my-4">
+          <Card key={post.id} className="news-card h-100">
             <Card.Img variant="top" src={post.media} />
               <Card.Body>
                 <Card.Title>{post.title.replace(": programming", '')}</Card.Title>
@@ -16,7 +16,7 @@ const NewsArticles = ({articles}) => {
                   <Card.Text>
                     Date Published: {post.published_date}
                   </Card.Text>
-              <Button variant="primary" href={post.link}>Read More</Button>
+              <button href={post.link} className="button-17">Read More</button>
             </Card.Body>
           </Card>
         </Col>

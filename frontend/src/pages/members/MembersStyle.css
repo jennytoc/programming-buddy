@@ -1,4 +1,32 @@
+.member-title {
+  margin: 2%;
+  font-weight: 300;
+}
+
 .profile-pic {
   width: 200px;
   height: 200px;
+}
+
+.filter-bar {
+  margin: auto 20%;
+  border: 1px solid rgb(18, 18, 18, 0.3);
+  border-radius: 15px;
+}
+
+.list-cont {
+  margin: 2%;
+}
+
+.profile-cont {
+  margin: 2%;
+}
+
+.lang-cont {
+  width: 100vh;
+  max-height: 15vh;
+  overflow: hidden;
+  border: 1px solid black;
+  align-items: center;
+  padding-top: 10px;
 }
