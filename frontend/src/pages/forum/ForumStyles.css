@@ -1,5 +1,6 @@
 .forum-title {
   margin: 2%;
+  font-weight: 300;
 }
 
 .forum-item-div {
@@ -59,16 +60,12 @@
 }
 
 /* Post details */
-.whole-cont {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 .main-cont {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 2%;
 }
 
 .post-cont {
@@ -90,12 +87,24 @@
 }
 
 .description {
-  margin-left: 0%;
-  margin-right: 0%;
+
   border-left: 1px solid rgb(30, 30, 30, 0.3);
 }
 
 .profile-pic {
   width: 100px;
   height: auto;
+}
+
+/* comment */
+
+.comment-title {
+  background-color: #5FA8D3;
+  min-height: 5vh;
+  overflow: hidden;
+}
+
+.form-cont {
+  width: 40%;
+  margin: auto 30%;
 }

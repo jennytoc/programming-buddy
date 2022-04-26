@@ -15,11 +15,21 @@ function PostRender(props) {
           props.removeComment(comment.id)
         }
       }
-      return <div className="comment">
-        <p>{comment.comment_description}</p>
-        <p>{comment.user && comment.user.username}</p>
-        <button className="delete-btn" onClick={ handleDeleteComment }>Delete Comment</button>
+      return <div>
+        <div className="post-cont mt-3">
+          <Row className="comment-title align-items-center justify-content-between">
+            <Col className="col-3" style={{color: "white"}}>{comment && comment.comment_date_created}</Col>
+            <Col className="col-2"><Button className="delete-btn" onClick={ handleDeleteComment } variant="secondary">Delete Comment</Button></Col>
+          </Row>
+          <Row className="detail-cont">
+            <Col>
+              <img className="profile-pic" src="https://res.cloudinary.com/dbi5z0la5/image/upload/v1650772943/my-uploads/kkievty6jz98l7pg7sez.png" />
+              <p>{comment && comment.user.username}</p>
+            </Col>
+            <Col xs={9} className="description"><p>{comment.comment_description}</p></Col>
+          </Row>
         </div>
+      </div>
     })
   }
 
@@ -35,11 +45,11 @@ function PostRender(props) {
     <div className="main-cont">
       <div className="post-cont">
         <Row className="detail-title align-items-center">
-          <Col style={{color: "white"}}>{props.post_date_created}</Col>
-          <Col xs={7}><h4 className="main-title">{ props.post_title }</h4></Col>
+          <Col className="col-3" style={{color: "white"}}>{props.post_date_created}</Col>
+          <Col xs={6}><h4 className="main-title ">{ props.post_title }</h4></Col>
           <Col><Link to={`/forum/${props.forum_value}/${props.id}/edit-post`}>
-          <Button>Edit Post</Button></Link></Col>
-          <Col><Button onClick={handleDeletePost}>Delete Post</Button></Col>
+          <Button variant="secondary">Edit Post</Button></Link></Col>
+          <Col><Button onClick={handleDeletePost} variant="secondary">Delete Post</Button></Col>
         </Row>
         <Row className="detail-cont">
           <Col>
