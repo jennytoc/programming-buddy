@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import {Form, Button, Stack, Row, Col } from 'react-bootstrap'
+import {Form, Button, Stack, Row, Col, Container } from 'react-bootstrap'
 import axios from "axios"
 import LanguageChoices from "../../data/LanguageChoices.json"
 import LevelChoices from "../../data/LevelChoices.json"
@@ -36,7 +36,7 @@ function ProfileRender(props) {
   }
 
   return (
-    <div>
+    <div className="profile-cont">
       <Row className="mb-3">
       <Form.Label column sm={2}>Upload Profile Picture:</Form.Label>
           <Col>
@@ -44,21 +44,17 @@ function ProfileRender(props) {
           </Col>
           <Col><Button onClick={uploadImage}>Upload Image</Button></Col>
       </Row>
-      <Form onSubmit={ props.handleEditProfile } method="POST">
+      <Form onSubmit={ props?.handleEditProfile ? props?.handleEditProfile : props.handleCreateProfile } method="POST">
         <Form.Group as={Row}>
             <Form.Label column sm={2}>First Name:</Form.Label>
           <Col>
             <Form.Control name="first-name" defaultValue={ props.profileDetails && props.profileDetails.user.first_name } />
           </Col>
-          </Form.Group>
-
-        <Form.Group as={Row}>          
           <Form.Label column sm={2}>Last Name:</Form.Label>
           <Col>
             <Form.Control name="last-name" defaultValue={ props.profileDetails && props.profileDetails.user.last_name } />
           </Col>
         </Form.Group>
-
         <Form.Group as={Row}>
           <Form.Label column sm={2}>Gender:</Form.Label>
           <Col>
@@ -90,7 +86,7 @@ function ProfileRender(props) {
           <Form.Control name="about" as="textarea" rows={6} defaultValue={ props.profileDetails && props.profileDetails.about } />
         </Form.Group>
 
-        <Stack gap={2} className="col-md-5 mx-auto">
+        <Stack gap={2} className="col-md-5 mx-auto mt-3">
           <Button variant="secondary" type="submit">Save Profile</Button>
           <Button variant="outline-secondary" onClick={() => navigate(-1)} >Cancel</Button>
         </Stack>

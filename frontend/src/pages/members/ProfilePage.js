@@ -23,30 +23,28 @@ function ProfilePage(props) {
     setMemberDetails(data ? data : null)
   }
 
+  const editProfileBtn = () => {
+    if (props.username !== "") {
+      return <Link to={`/members/${memberId}/edit-profile`}><Button variant="secondary">Edit Profile</Button></Link>
+    }
+  }
+
   const renderProfileItems = () => {
     if (memberDetails === null) {
       return (
+        <div className="setup-div">
+        <h3 className="my-4">This account has not been set up yet.</h3>
         <Link to={`/members/${memberId}/create-profile`}><Button>Set Up Profile</Button></Link>
+        </div>
       )
     } return (
-    // <div>
-    //   <h4>{ memberDetails && memberDetails.user.username }</h4>
-    //   <p>{ memberDetails && memberDetails.user.first_name }</p>
-    //   <p>{ memberDetails && memberDetails.user.last_name }</p>
-    //   <p>{ memberDetails && memberDetails.about }</p>
-    //   <img className="profile-pic" src="https://res.cloudinary.com/dbi5z0la5/image/upload/v1650772943/my-uploads/kkievty6jz98l7pg7sez.png" />
-    //   {memberDetails && memberDetails.language}
-    //   {memberDetails && memberDetails.proficiency}
-    //   {memberDetails && memberDetails.gender}
-    //   <Link to={`/members/${memberId}/edit-profile`}><Button>Edit Profile</Button></Link>
-    // </div>
-    <div className="profile-cont">
+    <div>
       <Row>
         <Col xs={4}>
           <img className="profile-pic" src="https://res.cloudinary.com/dbi5z0la5/image/upload/v1650772943/my-uploads/kkievty6jz98l7pg7sez.png" />
           <h5 style={{fontWeight:'400'}}>{ memberDetails && memberDetails.user.first_name } { memberDetails && memberDetails.user.last_name }</h5>
           <p>{memberDetails && memberDetails.gender}</p>
-          <Link to={`/members/${memberId}/edit-profile`}><Button variant="secondary">Edit Profile</Button></Link>
+          {editProfileBtn()}
         </Col>
         <Col xs={7}>
           <h4>{ memberDetails && memberDetails.user.username }'s profile</h4>

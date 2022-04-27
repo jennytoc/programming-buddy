@@ -105,6 +105,17 @@
 }
 
 .form-cont {
-  width: 40%;
-  margin: auto 30%;
+  width: 50%;
+  margin: auto 10%;
+}
+
+/* post form */
+.post-form-items {
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+}
+
+.post-form-cont {
+  width: 50%;
 }

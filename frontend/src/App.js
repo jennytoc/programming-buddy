@@ -54,7 +54,7 @@ function App() {
           <Route path="/forum/:section/:postId" element={ <PostDetailsPage username={ username }/> } />
 
           <Route path="/members" element={ <MembersPage/> } />
-          <Route path="/members/:memberId" element={ <ProfilePage/> } />
+          <Route path="/members/:memberId" element={ <ProfilePage username={username}/> } />
           <Route path="/members/:memberId/create-profile" element={ <CreateProfile username={ username }/> } />
           <Route path="/members/:memberId/edit-profile" element={ <EditProfile/> } />
 

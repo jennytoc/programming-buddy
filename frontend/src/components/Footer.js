@@ -10,7 +10,7 @@ function Footer() {
         </Col>
         <Col xs={4}>
           <img src={require('../images/facebook.png')} className="icon" alt="facebook"/>
-          <img src={require('../images/instagram.png')} className="icon" alt="instagram"/>
+          <a href="https://www.instagram.com/dundundara/"><img src={require('../images/instagram.png')} className="icon" alt="instagram"/></a> 
           <img src={require('../images/twitter.png')} className="icon" alt="twitter"/>
         </Col>
       </Row>

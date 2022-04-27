@@ -9,11 +9,11 @@ function CreateProfile(props) {
   const itemProfiles = "user-profiles"
 
   // event handlers
-  const handleEditProfile = async (event) => {
+  const handleCreateProfile = async (event) => {
     event.preventDefault()
 
     const profileData = {
-      user: props.username.user_id,
+      user: Number(memberId),
       about: event.target.elements["about"].value,
       gender: event.target.elements["gender-select"].value,
       language: event.target.elements["language-select"].value,
@@ -34,8 +34,8 @@ function CreateProfile(props) {
   }
 
   return (
-    <div>
-      <ProfileRender handleEditProfile={handleEditProfile} />
+    <div className="profile-items">
+      <ProfileRender handleCreateProfile={handleCreateProfile} />
     </div>
   )
 }

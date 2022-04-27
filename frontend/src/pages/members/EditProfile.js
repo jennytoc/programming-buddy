@@ -2,8 +2,9 @@ import ProBuddyAPI from "../../api/ProBuddyAPI"
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import ProfileRender from "../../components/members/ProfileRender"
+import "./MembersStyle.css"
 
-function EditProfile(props) {
+function EditProfile() {
   const navigate = useNavigate()
   const { memberId } = useParams()
   const itemUser = "users"
@@ -47,8 +48,8 @@ function EditProfile(props) {
   }
 
   return (
-    <div>
-      <ProfileRender handleEditProfile={handleEditProfile} profileDetails={profileDetails} />
+    <div className="profile-items">
+      <ProfileRender  handleEditProfile={handleEditProfile}  profileDetails={profileDetails} />
     </div>
   )
 }

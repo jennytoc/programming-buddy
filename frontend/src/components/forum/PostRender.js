@@ -15,11 +15,18 @@ function PostRender(props) {
           props.removeComment(comment.id)
         }
       }
+      const showCommentBtn = () => {
+        if (props.username != "") {
+          return (
+            <Col className="col-2"><Button className="delete-btn" onClick={ handleDeleteComment } variant="light">Delete Comment</Button></Col>
+          )
+        }
+      }
       return <div>
         <div className="post-cont mt-3">
           <Row className="comment-title align-items-center justify-content-between">
             <Col className="col-3" style={{color: "white"}}>{comment && comment.comment_date_created}</Col>
-            <Col className="col-2"><Button className="delete-btn" onClick={ handleDeleteComment } variant="light">Delete Comment</Button></Col>
+            { showCommentBtn() }
           </Row>
           <Row className="detail-cont">
             <Col>
@@ -41,15 +48,25 @@ function PostRender(props) {
     }
   }
 
+  const showPostBtn = () => {
+    if (props.username !== "") {
+      return (
+        <>
+        <Col><Link to={`/forum/${props.forum_value}/${props.id}/edit-post`}>
+          <Button variant="secondary">Edit Post</Button></Link></Col>
+          <Col><Button onClick={handleDeletePost} variant="secondary">Delete Post</Button></Col>
+        </>
+      )
+    }
+  }
+
   return (
     <div className="main-cont">
       <div className="post-cont">
         <Row className="detail-title align-items-center">
           <Col className="col-3" style={{color: "white"}}>{props.post_date_created}</Col>
           <Col xs={6}><h4 className="main-title ">{ props.post_title }</h4></Col>
-          <Col><Link to={`/forum/${props.forum_value}/${props.id}/edit-post`}>
-          <Button variant="secondary">Edit Post</Button></Link></Col>
-          <Col><Button onClick={handleDeletePost} variant="secondary">Delete Post</Button></Col>
+          { showPostBtn() }
         </Row>
         <Row className="detail-cont">
           <Col>

@@ -3,6 +3,15 @@
   font-weight: 300;
 }
 
+.profile-items {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-cont {
+  width: 40%;
+}
+
 .profile-pic {
   width: 200px;
   height: 200px;
@@ -29,4 +38,8 @@
   border: 1px solid black;
   align-items: center;
   padding-top: 10px;
+}
+
+.setup-div {
+  margin: 10%
 }

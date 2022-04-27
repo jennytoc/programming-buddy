@@ -16,7 +16,7 @@ const NewsArticles = ({articles}) => {
                   <Card.Text>
                     Date Published: {post.published_date}
                   </Card.Text>
-              <button href={post.link} className="button-17">Read More</button>
+              <a href={post.link} className="button-17">Read More</a>
             </Card.Body>
           </Card>
         </Col>

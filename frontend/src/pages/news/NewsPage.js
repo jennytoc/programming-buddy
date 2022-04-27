@@ -44,7 +44,7 @@ function NewsPage() {
     <div>
       <header className="news-header">
       </header>
-      <h2 className="news-title">Check out what's tending in tech</h2>
+      <h2 className="news-title">Check out what's trending in tech</h2>
       <NewsArticles articles={currentPosts} />
       <Pagination postsPerPage={postsPerPage} totalPosts={articles.length} paginate={paginate}/>
     </div>   

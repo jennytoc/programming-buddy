@@ -10,6 +10,7 @@
   background-image: url('../../images/the-world.jpg');
   background-size: cover;
   background-position: center;
+  animation: fadeIn 2s;
 }
 
 .news-title {
@@ -24,6 +25,7 @@
 /* CSS */
 .button-17 {
   align-items: center;
+  text-decoration: none;
   appearance: none;
   background-color: #fff;
   border-radius: 24px;

@@ -1,5 +1,5 @@
-import { Link, Navigate, useNavigate } from "react-router-dom"
-import { Navbar, Nav, Container, Col, Button } from 'react-bootstrap';
+import { Link, useNavigate } from "react-router-dom"
+import { Navbar, Nav, Col, Button } from 'react-bootstrap';
 import ProBuddyAPI from "../api/ProBuddyAPI"
 import './NavBarsStyle.css'
 
@@ -35,6 +35,9 @@ function LoginBar(props) {
     return (
       <div>
         <Navbar className="login-bar">
+          <Navbar.Brand as={Col} xs={8}>
+                <img alt="logo" src={require("../images/Programming-Buddy-Trans.png")} className="logo"/>
+              </Navbar.Brand>
           <Nav className="ms-auto">
           <Nav.Link as={Link} to="#" onClick={logMeOut}><Button variant="outline-secondary">Logout</Button></Nav.Link>
           </Nav>

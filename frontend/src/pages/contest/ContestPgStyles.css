@@ -1,11 +1,21 @@
+.contest-card {
+  min-height: 35vh;
+  overflow: hidden;
+}
+
 .contest-head {
   height: 90vh;
   overflow: hidden;
   background-image: url('/src/images/keyboard-hand.jpg');
   background-size: cover;
   background-position: center;
+  animation: fadeIn 2s;
 }
 
-/* .news-card {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-} */
+.contest-title {
+  background-color: #1B4965;
+  min-height: 30%;
+  overflow: hidden;
+  color: rgb(227, 227, 227);
+  padding: 1%;
+}

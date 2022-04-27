@@ -5,14 +5,14 @@ function ContestRender(props) {
     return props.contests.map((contest) => {
       return (
         <Col className="my-4">
-          <Card key={contest.id} className="news-card h-100">
+          <Card key={contest.id} className="news-card contest-card h-100">
             <Card.Body>
-            <Card.Title>{contest && contest.name}</Card.Title>
+            <Card.Title className="contest-title d-flex align-items-center justify-content-center">{contest && contest.name}</Card.Title>
             <Card.Subtitle>Start Time</Card.Subtitle>
             <Card.Text>{contest && contest.start_time}</Card.Text>
             <Card.Subtitle>End Time</Card.Subtitle>
             <Card.Text>{contest && contest.end_time}</Card.Text>
-            <button href={contest && contest.url} className="button-17">CLick Here</button>
+            <a href={contest && contest.url} className="button-17">CLick Here</a>
             </Card.Body>
           </Card>
         </Col>
